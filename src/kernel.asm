@@ -39,7 +39,7 @@ bootloader:
 	copyright db 'Copyright (c) 2011 Sam Saint-Pettersen.', 0
 	newline db 0x0D, 0x0A, 0
 	dateformat db '00/00/0000', 0	
-	
+;	
 ; Routine: print_welcome.
 ; Print the welcome and copyright notice.
 print_welcome
@@ -79,7 +79,7 @@ get_day:
 	dayloop:
 	shr bh, 1			; Shift right 4x
 	loop dayloop
-	add bh, 0x30		; Add 30h to convert to ASCII
+	add bh, 0x30			; Add 30h to convert to ASCII
 	mov [dateformat], bh
 	mov bh, dl
 	and bh, 0x0F;
@@ -99,7 +99,7 @@ get_month:
 	mthloop:
 	shr bh, 1			; Shift right 4x
 	loop mthloop
-	add bh, 0x30		; Add 30h to convert to ASCII
+	add bh, 0x30			; Add 30h to convert to ASCII
 	mov [dateformat], bh
 	mov bh, dh
 	and bh, 0x0F;
@@ -119,7 +119,7 @@ get_year:
 	yrloop:
 	shr bh, 1			; Shift right 4x
 	loop yrloop
-	add bh, 0x30		; Add 30h to convert to ASCII
+	add bh, 0x30			; Add 30h to convert to ASCII
 	mov [dateformat], bh
 	mov bh, cl
 	and bh, 0x0F;
@@ -134,14 +134,14 @@ print_string:
 	mov ah, 0x0E		
 						
 .repeat:
-	lodsb						; Get character from string.
+	lodsb				; Get character from string.
 	cmp al, 0
-	je .done					; If char is zero, end of string.
-	int 0x10					; Otherwise, print it. (10h is the BIOS interrupt for print).
+	je .done			; If char is zero, end of string.
+	int 0x10			; Otherwise, print it. (10h is the BIOS interrupt for print).
 	jmp .repeat
 
 .done:
 	ret
 
 	times 510 - ($-$$) db 0		; Pad remainder of boot sector with 0s
-	dw 0xAA55					; The standard PC boot signature.
+	dw 0xAA55			; The standard PC boot signature.
