@@ -9,5 +9,4 @@ build:
 	rm -f bin/kernel.bin
 
 copy:	build
-	cp bin/kernel.flp C:/Dev/qemu-0.9.0-windowsa
-
+	cp bin/kernel.flp C:/Dev/qemu-0.9.0-windows
