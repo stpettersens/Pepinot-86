@@ -24,10 +24,7 @@ bootloader:
 	mov ax, 0x07C0		; Set data segment to loaded location.
 	mov ds, ax
 
-	mov si, msg_string	; Print welcome message.
-	call print_string
-	mov si, newline		
-	call print_string
+	call print_welcome	; Print welcome and copyright message.
 
 	call get_date		; Print system date.
 	mov si, dateformat
@@ -37,16 +34,38 @@ bootloader:
 
 	jmp $				; Jump here; infinite loop.
 
-	; Welcome message for operating system
-	msg_string db 'Welcome to Pepinot 86...', 0 
+	; Welcome message and copyright notice for operating system
+	msg_string db 'Welcome to Pepinot 86.', 0 
+	copyright db 'Copyright (c) 2011 Sam Saint-Pettersen.', 0
 	newline db 0x0D, 0x0A, 0
+	dateformat db '00/00/0000', 0	
+	
+; Routine: print_welcome.
+; Print the welcome and copyright notice.
+print_welcome
+	mov si, newline
+	call print_string
+	mov si, msg_string
+	call print_string
+	mov si, newline
+	call print_string
+	mov si, copyright
+	call print_string
+	mov si, newline
+	call print_string
+	mov si, newline
+	call print_string
+	ret
 
 ;
-; Routine: get_date
-; Return the [dd/mm/yyyy] system date in ASCII format.
-; ch = century, cl = year, dh = month, dl = day.
+; Routine: get_date in US date notation.
+; Return the [mm/dd/yyyy] system date in ASCII format.
+; [ch = century,] cl = year, dh = month, dl = day.
 get_date:
+	call get_month		; Get ASCII month (mm).
 	call get_day		; Get ASCII day (dd).
+	;call get_year		; Get ASCII year (yyyy).
+	ret
 	
 ;
 ; Routine: get_day
@@ -65,11 +84,49 @@ get_day:
 	mov bh, dl
 	and bh, 0x0F;
 	add bh, 0x30
+	mov [dateformat + 4], bh
+	ret
+
+;
+; Routine: get_month
+; Return the system month in ASCII format.
+; dh = month.
+get_month:
+	mov ah, 0x04		
+	int 0x1A	
+	mov bh, dh
+	mov ecx, 4
+	mthloop:
+	shr bh, 1			; Shift right 4x
+	loop mthloop
+	add bh, 0x30		; Add 30h to convert to ASCII
+	mov [dateformat], bh
+	mov bh, dh
+	and bh, 0x0F;
+	add bh, 0x30
 	mov [dateformat + 1], bh
-	ret		
+	ret
 
-dateformat db '00/00/0000', 0		
-
+;
+; Routine: get_year
+; Return the system year in ASCII format.
+; cl = year.
+get_year:
+	mov ah, 0x04		
+	int 0x1A	
+	mov bh, cl
+	mov ecx, 4
+	yrloop:
+	shr bh, 1			; Shift right 4x
+	loop yrloop
+	add bh, 0x30		; Add 30h to convert to ASCII
+	mov [dateformat], bh
+	mov bh, cl
+	and bh, 0x0F;
+	add bh, 0x30
+	mov [dateformat + 9], bh
+	ret	
+	
 ;
 ; Routine: print_string 
 ; Output string in SI to screen.
