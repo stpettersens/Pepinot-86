@@ -16,33 +16,34 @@
 ;
 ; Bootloader
 bootloader:
-	mov ax, 0x07C0		; Set up 4kb stack space after this bootloader.
-	add ax, 288			; (4096 + 512) / 16 bytes per paragraph.
+	mov ax, 0x07C0			; Set up 4kb stack space after this bootloader.
+	add ax, 288				; (4096 + 512) / 16 bytes per paragraph.
 	mov ss, ax
 	mov sp, 4096
 
-	mov ax, 0x07C0		; Set data segment to loaded location.
+	mov ax, 0x07C0			; Set data segment to loaded location.
 	mov ds, ax
 
-	call print_welcome	; Print welcome and copyright message.
+	call print_welcome		; Print welcome and copyright message.
 
-	call get_date		; Print system date.
+	call get_date			; Print system date.
 	mov si, dateformat
 	call print_string
 	mov si, newline
 	call print_string
 
-	jmp $				; Jump here; infinite loop.
+	jmp $					; Jump here; infinite loop.
 
 	; Welcome message and copyright notice for operating system
 	msg_string db 'Welcome to Pepinot 86.', 0 
 	copyright db 'Copyright (c) 2011 Sam Saint-Pettersen.', 0
 	newline db 0x0D, 0x0A, 0
-	dateformat db '00/00/0000', 0	
+	dateformat db '00/00/0000', 0
+	
 ;	
 ; Routine: print_welcome.
 ; Print the welcome and copyright notice.
-print_welcome
+print_welcome:
 	mov si, newline
 	call print_string
 	mov si, msg_string
@@ -58,13 +59,13 @@ print_welcome
 	ret
 
 ;
-; Routine: get_date in US date notation.
-; Return the [mm/dd/yyyy] system date in ASCII format.
-; [ch = century,] cl = year, dh = month, dl = day.
+; Routine: get_date in UK date notation.
+; Return the [dd/mm/yyyy] system date in ASCII format.
+; ch = century, cl = year, dh = month, dl = day.
 get_date:
-	call get_month		; Get ASCII month (mm).
-	call get_day		; Get ASCII day (dd).
-	;call get_year		; Get ASCII year (yyyy).
+	call get_day			; Get ASCII day (dd).
+	call get_month			; Get ASCII month (mm).
+	;call get_year			; Get ASCII year (yyyy).
 	ret
 	
 ;
@@ -77,14 +78,14 @@ get_day:
 	mov bh, dl
 	mov ecx, 4
 	dayloop:
-	shr bh, 1			; Shift right 4x
+	shr bh, 1				; Shift right 4x
 	loop dayloop
 	add bh, 0x30			; Add 30h to convert to ASCII
 	mov [dateformat], bh
 	mov bh, dl
 	and bh, 0x0F;
 	add bh, 0x30
-	mov [dateformat + 4], bh
+	mov [dateformat + 1], bh
 	ret
 
 ;
@@ -97,14 +98,14 @@ get_month:
 	mov bh, dh
 	mov ecx, 4
 	mthloop:
-	shr bh, 1			; Shift right 4x
+	shr bh, 1				; Shift right 4x
 	loop mthloop
 	add bh, 0x30			; Add 30h to convert to ASCII
 	mov [dateformat], bh
 	mov bh, dh
-	and bh, 0x0F;
+	and bh, 0x0F
 	add bh, 0x30
-	mov [dateformat + 1], bh
+	mov [dateformat + 3], bh
 	ret
 
 ;
@@ -117,7 +118,7 @@ get_year:
 	mov bh, cl
 	mov ecx, 4
 	yrloop:
-	shr bh, 1			; Shift right 4x
+	shr bh, 1				; Shift right 4x
 	loop yrloop
 	add bh, 0x30			; Add 30h to convert to ASCII
 	mov [dateformat], bh
@@ -144,4 +145,4 @@ print_string:
 	ret
 
 	times 510 - ($-$$) db 0		; Pad remainder of boot sector with 0s
-	dw 0xAA55			; The standard PC boot signature.
+	dw 0xAA55					; The standard PC boot signature.
