@@ -9,7 +9,7 @@ and to a lesser extent, ANSI C.
 Pepinot 86 is named after the orphan from the 2004 French film - *The Chorus* (*Les choristes*) with
 86 coming from the x86 architecture. It's designed is inspired by MS-DOS, Linux and Mike Saunders' [MikeOS](http://mikeos.berlios.de).
 
-It is being developed principally on Windows 7 with *make* from [MinGW/MSYS](http://www.mingw.org) , [NASM](http://www.nasm.us) assembler, a [mkisofs port][(http://smithii.com/cdrtools) and a [dd port](http://www.chrysocome.net/dd). 
+It is being developed principally on Windows 7 with *make* from [MinGW/MSYS](http://www.mingw.org) , [NASM](http://www.nasm.us) assembler, a [mkisofs port](http://smithii.com/cdrtools) and a [dd port](http://www.chrysocome.net/dd). 
 
 It is tested in [QEMU](http://www.h7.dion.ne.jp/~qemu-win) (floppy image) and [VirtualBox](http://www.virtualbox.org) (CD/ISO image).
 
