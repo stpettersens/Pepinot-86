@@ -1,0 +1,23 @@
+/*
+Stylesheet for Pepinot 86 project website.
+
+Copyright (c) 2011 Sam Saint-Pettersen.
+*/
+body {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+h2
+{
+	font-family: 'Cookie', cursive;
+	font-size: 50pt;
+}
+#forkMe {
+	position: absolute;
+	top: 0em;
+	right: 0em;
+	border: 0em;
+}
+#navigation {
+	text-align: center;
+}
