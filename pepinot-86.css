@@ -2,13 +2,18 @@
 Stylesheet for Pepinot 86 project website.
 Copyright (c) 2011 Sam Saint-Pettersen.
 */
+
+/* Import Satifisy font from Google Web fonts. */
+@import url(http://fonts.googleapis.com/css?family=Satisfy);
+
 body {
 	font-family: Verdana, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-size: 10pt;	
 }
-h2, h4 {
+h2, h4, #navigation,  #links {
 	font-family: 'Satisfy', cursive;
 	font-size: 42pt;
+	/*text-shadow: #505050 0.1em 0.3em 0.3em;*/
 }
 h4 {
 	font-size: 20pt;
@@ -20,30 +25,63 @@ h4 {
 	border: 0em;
 }
 #navigation {
-	font-family: 'Satisfy', cursive;
 	font-size: 28pt;
 	margin-left: auto;
 	margin-right: auto;
-	padding-top: 1em;
+	padding-top: 0.1em;
 	padding-left: 1em;
 	text-align: center;
+}
+#links {
+	margin: 0.4em;
+	font-size: 24pt;
+	width: 220px;
 }
 #content-img {
 	float: left;
 	padding-top: 4em;
-	padding-left: 20em;
-}
-#content-text {
-	float: right;
-	padding-top: 2em;
-	padding-right: 20em;
+	padding-left: 5em; /* !! */
+	margin-left: 5em;
 	padding-bottom: 2em;
-	width: 500px;
-	margin-bottom: 2em;
+	width: 5px;
+}
+#content-text1 {
+	float: left;
+	padding-top: 2em;
+	padding-left: 20em; /* !! */
+	padding-bottom: 2em;
+	width: 400px;
+}
+#content-text2 {
+	float: right;
+	padding-right: 10em;
+	width: 240px;
+	margin-top: 5.5em;
+	margin-right: 10em;
+	border: 0.1em solid #A8A8A8;
+	text-align: right;
 }
 #footer {
+	position: absolute;
+	bottom: 0em;
+	padding-left: 40em;
 	margin-top: 10em;
 	font-size: 8pt;
+}
+#repo
+{
+	/*-webkit-transform: rotate(-3deg); 
+	-moz-transform: rotate(-3deg);	
+	-ms-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg);
+	transform: rotate(-3deg);*/
+	width: 30em;
+	padding: 0.5em;
+	font-weight: bold;
+	font-size: 10pt;
+	background-color: #000000;
+	color: #FFFFFF;
+	margin: 0.2em;
 }
 a {
 	color: #303030;
