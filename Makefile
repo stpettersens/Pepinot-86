@@ -9,7 +9,7 @@ build:
 	rm -f bin/kernel.bin
 
 win: build
-	cp bin/kernel.flp C:/Dev/qemu-0.9.0-windows
+	cp bin/kernel.flp C:/Dev/QEMU
 
 iso: build
 	mkdir bin/cdiso
