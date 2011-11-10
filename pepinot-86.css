@@ -33,15 +33,21 @@ h4 {
 	text-align: center;
 }
 #links {
+	-webkit-transform: rotate(-5deg); 
+	-moz-transform: rotate(-5deg);	
+	-ms-transform: rotate(-5deg);
+	-o-transform: rotate(-5deg);
+	float: right;
 	margin: 0.4em;
 	font-size: 24pt;
-	width: 220px;
+	padding-right: 2em;
+	width: 400px;
 }
 #content-img {
 	float: left;
 	padding-top: 4em;
 	padding-left: 5em; /* !! */
-	margin-left: 5em;
+	margin-left: 0.1em;
 	padding-bottom: 2em;
 	width: 5px;
 }
@@ -54,27 +60,28 @@ h4 {
 }
 #content-text2 {
 	float: right;
-	padding-right: 10em;
-	width: 240px;
+	padding-right: 8em;
+	width: 300px;
 	margin-top: 5.5em;
 	margin-right: 10em;
 	border: 0.1em solid #A8A8A8;
-	text-align: right;
+}
+#inner-content {
+	padding-left: 5.5em;
 }
 #footer {
 	position: absolute;
-	bottom: 0em;
+	bottom: 4em;
 	padding-left: 40em;
 	margin-top: 10em;
 	font-size: 8pt;
 }
 #repo
 {
-	/*-webkit-transform: rotate(-3deg); 
-	-moz-transform: rotate(-3deg);	
-	-ms-transform: rotate(-3deg);
-	-o-transform: rotate(-3deg);
-	transform: rotate(-3deg);*/
+	-webkit-transform: rotate(-5deg); 
+	-moz-transform: rotate(-5deg);	
+	-ms-transform: rotate(-5deg);
+	-o-transform: rotate(-5deg);
 	width: 30em;
 	padding: 0.5em;
 	font-weight: bold;
