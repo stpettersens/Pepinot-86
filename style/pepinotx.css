@@ -1,0 +1,32 @@
+/
+Stylesheet for Pepinot 86 project website.
+Copyright (c) 2011 Sam Saint-Pettersen.
+*/
+
+/* Import Satifisy font from Google Web fonts. */
+@import url(http://fonts.googleapis.com/css?family=Satisfy);
+
+body {
+
+}
+.largeText {
+	font-family: 'Satisfy', cursive;
+	font-size: 40pt;
+}
+nav {
+	font-family: 'Satisfy', cursive;
+	font-size: 20pt;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+a {
+	color: #AA0000;
+	text-decoration: none;
+}
+#forkMe {
+	position: absolute;
+	top: 0em;
+	right: 0em;
+	border: 0em;
+}

@@ -10,10 +10,14 @@ body {
 	font-family: Verdana, Helvetica, sans-serif;
 	font-size: 10pt;	
 }
-h2, h4, #navigation,  #links {
+.largeText, h2, h4, #navigation {
 	font-family: 'Satisfy', cursive;
 	font-size: 42pt;
-	/*text-shadow: #505050 0.1em 0.3em 0.3em;*/
+	#font-weight: bold;
+}
+#links {
+	font-family: 'Satisfy', cursive;
+	font-size: 20pt;
 }
 h4 {
 	font-size: 20pt;
