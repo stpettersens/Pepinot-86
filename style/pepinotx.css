@@ -1,4 +1,4 @@
-/
+/*
 Stylesheet for Pepinot 86 project website.
 Copyright (c) 2011 Sam Saint-Pettersen.
 */
@@ -7,26 +7,57 @@ Copyright (c) 2011 Sam Saint-Pettersen.
 @import url(http://fonts.googleapis.com/css?family=Satisfy);
 
 body {
-
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 10pt;	
 }
-.largeText {
+.largeText, h2, h4 {
 	font-family: 'Satisfy', cursive;
-	font-size: 40pt;
+	font-size: 42pt;
+}
+.italic
+{
+	font-style: italic;
 }
 nav {
 	font-family: 'Satisfy', cursive;
-	font-size: 20pt;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
+	font-size: 24pt;
 }
-a {
-	color: #AA0000;
-	text-decoration: none;
+article {
+	width: 40em;
+	margin-top: 3em;
+	margin-left: 20em;
+	text-align: left;
+}
+footer {
+	margin-top: 15em;
+	font-size: 8pt;
+}
+h4 {
+	font-size: 20pt;
+}
+#wrapper {
+	margin-top: 2em;
+	text-align: center;
 }
 #forkMe {
 	position: absolute;
 	top: 0em;
 	right: 0em;
 	border: 0em;
+}
+#repo
+{
+	width: 34em;
+	padding: 0.5em;
+	font-size: 10pt;
+	background-color: #000000;
+	color: #FFFFFF;
+	margin: 0.2em;
+}
+a {
+	color: #303030;
+	text-decoration: none;
+}
+a:hover {
+	color: #000000;
 }
