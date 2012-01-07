@@ -61,3 +61,11 @@ a {
 a:hover {
 	color: #000000;
 }
+.extern
+{
+	color: #AA0000;
+}
+abbr
+{
+	border-bottom: 1px dotted;
+}
