@@ -70,3 +70,9 @@ abbr
 {
 	border-bottom: 1px dotted; /* For Chrome and others which do not underline abbreviations by default. */
 }
+#copy
+{
+	margin-left: 34em;
+	font-size: 8pt;
+	text-align: right;
+}
