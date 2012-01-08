@@ -3,6 +3,13 @@ Main script functions for Pepinot 86 website.
 Depends on jQuery library.
 */
 
+// Make extern links open in new tab/window.
+function makeExternLinks()
+{
+	$('a.extern').attr('target', '_blank');
+}
+
+// Add Like buttons to the bottom of the page.
 function addLikeButtons()
 {
 	var fbLike = '<div class="fb-like" data-href="http://stpettersens.github.com/Pepinot-86/"'
@@ -14,4 +21,5 @@ function addLikeButtons()
 	Neither button works in Opera. They will just not display. */
 	if($.browser.webkit) $('div#like').css('margin-left', '5em');
 }
+makeExternLinks();
 addLikeButtons();
